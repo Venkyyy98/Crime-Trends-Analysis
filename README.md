@@ -44,7 +44,7 @@ Tableau for interactive dashboards
 Installation & Setup ⚙️
 
 Clone the repository:
-git clone https://github.com/YOUR_GITHUB_USERNAME/Crime-Trends-Analysis.git
+git clone https://github.com/Venkyyy_98/Crime-Trends-Analysis.git
 cd Crime-Trends-Analysis
 Install dependencies:
 pip install pandas numpy matplotlib seaborn scikit-learn statsmodels folium geopandas
