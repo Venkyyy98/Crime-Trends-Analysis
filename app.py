@@ -7,8 +7,9 @@ import plotly.express as px
 # Load and prepare dataset
 df = pd.read_csv("NYPD_Arrests_Data__Historic__2020-2025.csv")
 
-df = df.sample(n=20000, random_state=42)
-print("Loaded columns:", df.columns.tolist())  # <-- Add this line
+df = df.sample(n=10000, random_state=42)
+print("Loaded columns:", df.columns.tolist())
+print("Loaded columns:", df.columns.tolist())
 df = df[df['LAW_CAT_CD'] == 'F']
 df = df.dropna(subset=['Latitude', 'Longitude', 'OFNS_DESC', 'ARREST_BORO'])
 df['ARREST_DATE'] = pd.to_datetime(df['ARREST_DATE'], errors='coerce')
