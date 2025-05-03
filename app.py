@@ -5,7 +5,12 @@ import pandas as pd
 import plotly.express as px
 
 # Load and prepare dataset
-df = pd.read_csv("https://drive.google.com/uc?id=1Oludb5WpBaL-dkXwh4g0HBGnt_qUR3y1")
+url = "https://drive.google.com/uc?id=1Oludb5WpBaL-dkXwh4g0HBGnt_qUR3y1"
+df = pd.read_csv(url)
+
+if 'LAW_CAT_CD' not in df.columns:
+    raise ValueError("CSV may not have loaded correctly — check Google Drive link")
+
 
 df = df[df['LAW_CAT_CD'] == 'F']
 df = df.dropna(subset=['Latitude', 'Longitude', 'OFNS_DESC', 'ARREST_BORO'])
