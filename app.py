@@ -17,10 +17,14 @@ df['ARREST_DATE'] = pd.to_datetime(df['ARREST_DATE'], errors='coerce')
 df['OFNS_DESC'] = df['OFNS_DESC'].astype('category')
 df['ARREST_BORO'] = df['ARREST_BORO'].astype('category')
 
+if 'LAW_CAT_CD' in df.columns:
+    df = df[df['LAW_CAT_CD'] == 'F']
 
-df = df[df['LAW_CAT_CD'] == 'F']
+if 'ARREST_DATE' in df.columns:
+    df['ARREST_DATE'] = pd.to_datetime(df['ARREST_DATE'], errors='coerce')
+
+
 df = df.dropna(subset=['Latitude', 'Longitude', 'OFNS_DESC', 'ARREST_BORO'])
-df['ARREST_DATE'] = pd.to_datetime(df['ARREST_DATE'], errors='coerce')
 df['Year'] = df['ARREST_DATE'].dt.year
 
 top_crimes = df['OFNS_DESC'].value_counts().nlargest(6).index.tolist()
