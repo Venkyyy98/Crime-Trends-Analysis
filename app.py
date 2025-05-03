@@ -23,8 +23,11 @@ if 'LAW_CAT_CD' in df.columns:
 if 'ARREST_DATE' in df.columns:
     df['ARREST_DATE'] = pd.to_datetime(df['ARREST_DATE'], errors='coerce')
 
+required_cols = ['Latitude', 'Longitude', 'OFNS_DESC', 'ARREST_BORO']
+if all(col in df.columns for col in required_cols):
+    df = df.dropna(subset=required_cols)
 
-df = df.dropna(subset=['Latitude', 'Longitude', 'OFNS_DESC', 'ARREST_BORO'])
+
 df['Year'] = df['ARREST_DATE'].dt.year
 
 top_crimes = df['OFNS_DESC'].value_counts().nlargest(6).index.tolist()
